@@ -1,0 +1,68 @@
+<?php
+$con=new mysqli('localhost','root','','bms');
+if($con->connect_errno)
+{
+echo $con->connect_error;
+die();
+}
+?>
+<html>
+<head>
+	<title>Banking Management System</title>
+	</head>
+	<h1 style="font-size:500%;color:blueviolet;">Banking Management System</h1>
+        <form action="bms.php" method="post">
+        <bgcolor="Red">
+	<table>
+	<tr><td><h1 style="font-size:300%;color:yellow;">Name</td><td><input type="text" name="name" </td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">Age</td><td><input type="number" name="age"</td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">Gender</td><td><input type="text" name="gender" </td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">Email</td><td><input type="text" name="email"</td></tr>	
+		<tr><td><h1 style="font-size:300%;color:yellow;">UserID</td><td><input type="text" name="userid"</td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">Address</td><td><input type="text" name="address"</td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">AdharNo</td><td><input type="text" name="adharno"</td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">CurrentBalance</td><td><input type="text" name="currentbalance"</td></tr>
+		<tr><td><h1 style="font-size:300%;color:yellow;">MainBalance</td><td><input type="text" name="mainbalance"</td></tr>
+		<tr>
+		<td colspan='2' align="center">
+		<input type="submit" name="submit" value="ADD RECORD">
+			</td>
+		</tr>
+		</table>
+	</form>
+	<?php
+	if(isset($_POST['submit']))
+	{
+       	 	$name=$_POST['name'];
+		$age=$_POST['age'];
+		$gender=$_POST['gender'];
+		$email=$_POST['email'];
+		$userid=$_POST['userid'];
+		$address=$_POST['address'];
+		$adharno=$_POST['adharno'];
+		$currentbalance=$_POST['currentbalance'];
+		$mainbalance=$_POST['mainbalance'];
+		if($name!=""&&$age!=""&&$gender!=""&&$email!=""&&$userid!=""&&$address!=""&&$adharno!=""!=""&&$currentbalance!=""&&$mainbalance!="")
+		{
+		$sql="INSERT INTO tab (name,age,gender,email,userid,address,adharno,currentbalance,mainbalance) VALUES ('$name',$age,'$gender','$email',$userid,'$address,$adharno,$currentbalance,$mainbalance)";
+		if($con->query($sql))
+		{
+			echo "data stored";
+		}
+		else
+		{
+		echo "Insert data failed";
+		}
+		}
+		else
+		{
+			echo "all field required";
+		}
+	}
+	else
+	{
+		echo "please enter all the data";
+	}
+	?>
+		</body>
+

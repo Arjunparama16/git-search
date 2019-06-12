@@ -1,0 +1,46 @@
+<?php
+error_reporting(0);
+mysql_connect('localhost','root','');
+mysql_select_db('bms');
+$sql= "SELECT * FROM tab";
+$records=mysql_query($sql);
+?>
+<html>
+<head>
+<title>Bank Datas
+	</title>
+	</head>	
+	<body>
+	<center><h1>BANKING MANAGEMENT SYSTEM</h1>
+<table width="600" border="1" cellpadding="1" cellspacing="1">
+	<tr>
+		<th>Name</th>
+		<th>Age</th>
+		<th>Gender</th>
+		<th>Email</th>
+		<th>UserID</th>
+		<th>Address</th>
+		<th>AdharNo</th>
+		<th>CurrentBalance</th>
+		<th>MainBalance</th>
+	</tr>
+	<?php
+	while($tab=mysql_fetch_assoc($records))
+	{
+		echo "<tr>";
+		echo "<td>".$tab['name']."</td>";
+		echo "<td>".$list1['age']."</td>";
+		echo "<td>".$list1['gender']."</td>";
+		/*echo "<td>".$list1['email']."</td>";*/
+		echo "<td>".$list1['userid']."</td>";
+		echo "<td>".$list1['address']."</td>";
+		echo "<td>".$list1['adharno']."</td>";
+		echo "<td>".$list1['currentbalance']."</td>";
+		echo "<td>".$list1['mainbalance']."</td>";
+		echo "</tr>";
+	}
+	?>
+	</table>	
+	<a href="bank1.php"><h1>click to next page</h1>
+	</body>
+	</html>
